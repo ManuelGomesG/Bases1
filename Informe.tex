@@ -76,7 +76,7 @@ Darwin Rocha % Instructor/supervisor
 \section{Introducci\'on}
 
 
-Se pretende realizar un modelo conceptual de una base de datos propios del funcionamiento de la administración y servicios que le presta al cliente la mega-tienda de muebles VenTruePe. Para este objetivo utilizaremos el modelo de datos Entidad-Relaci\'on como base para el esquema que ilustrar\'a el resultado final. Adem\'as presentaremos un diccionario de datos que tendr\'a reflefado todas las entidades del esquema con su sem\'antica, dominnio, atributos y sem\'antica de los atributos adem\'as de las relaciones y su sem\'antica.
+Se pretende realizar un modelo conceptual de una base de datos propios del funcionamiento de la administración y servicios que le presta al cliente la mega-tienda de muebles VenTruePe. Para este objetivo utilizaremos el modelo de datos Entidad-Relaci\'on Extendido como base para el esquema que ilustrar\'a el resultado final. Adem\'as presentaremos un diccionario de datos que tendr\'a reflefado todas las entidades del esquema con su sem\'antica, dominnio, atributos y sem\'antica de los atributos adem\'as de las relaciones y su sem\'antica.
 \\
 
 Esperamos que el modelo conceptual resultante cumpla, en la medida de lo posible, con las condiciones de de correctitud, completitud, minimalidad, expresividad, legibilidad, extensibilidad y autoexplicatividad, que caracterizan un modelado conceptual de calidad.
@@ -85,11 +85,23 @@ Esperamos que el modelo conceptual resultante cumpla, en la medida de lo posible
 
 \clearpage
 
-\section{Introducci\'on}
+\section{Contenido}
 
-To determine the atomic weight of magnesium via its reaction with oxygen and to study the stoichiometry of the reaction (as defined in \ref{definitions}):
+\subsection{Planteamiento del Problema}
 
-\begin{center}\ce{2 Mg + O2 -> 2 MgO}\end{center}
+Realizar un modelo conceptual que sirva a la mega-tienda de muebles VenTruePe, que le ayude a tener una mejor organizaci\'on y resolver los siguientes problemas:
+\begin{itemize}
+\item Organizar y llevar control riguroso de las compras que realiza la mega-tienda a sus proveedores. 
+\item Controlar eficientemente el manejo de los recursos humanos de la empresa, todo lo relacionado los empleados, sus p\'olizas de seguro y las de sus dependientes.
+\item Manejar un registro de las ventas, trueques y pedidos que realiza la mega-tienda.
+
+\end{itemize}
+ Como objetivo nos planteamos la creaci\'on de un esquema conceptual de bases de datos que satisfaga las necesidades de la empresa, que sea de calidad y que, adem\'as sea eficiente.
+\subsection{Fundamentos te\'oricos}
+Usaremos el modelo de datos Entidad-Relaci\'on extendido para resolver los problemas de la mega-tienda. Esta estructura nos servir\'a para el an\'alisis y la creaci\'on del esquema del modelo solicitado por la empresa.
+\\
+
+Se usar\'a, para la realizaci\'on del esquema la herramienta de diagramaci\'on Dia.
 
 % If you have more than one objective, uncomment the below:
 %\begin{description}
@@ -99,7 +111,8 @@ To determine the atomic weight of magnesium via its reaction with oxygen and to 
 %Objective 2 text
 %\end{description}
 
-\subsection{Definitions}
+\subsection{Soluci\'on del problema}
+
 \label{definitions}
 \begin{description}
 \item[Stoichiometry]
