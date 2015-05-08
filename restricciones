@@ -24,4 +24,10 @@ R8: Para toda factura de cliente el monto total es la suma de los precios de ven
     (V f | Genera(f) : f[FACTURA_C].monto = (+ i | Se_vende(i) ^ i[VENTA] = f[VENTA] : i[ARTÍCULO].precio_venta))
 
 R9: Para un vendedor se acumulan los sábados que en el último mes únicamente.
-    (V 
+    (V v | VENDEDOR[v] : 0 <= v.num_sábados <= 4)
+
+R10: El sueldo de un vendedor es la suma de su sueldo base con el bono por los sábados trabajados en el mes y las comisiones de las ventas del mes.
+    (V v | VENDEDOR(v) : v.sueldo = v.sueldo_base + v.num_sábados*BONO.monto + (+ i | Genera(i) ^ (E j | VENTA(j) : i[VENTA] = j ^ 
+                                                                                (E k | Realiza(k) : k[OPERACIÓN] = j ^ k[VENDEDOR] = i[VENDEDOR]))
+                                                                                 : i[FACTURA].monto)
+R11: 
