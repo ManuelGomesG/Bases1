@@ -1,0 +1,18 @@
+R1: (V p | PRIMA(p) : p.tipo.grupo_etario = "menor" v p.tipo.grupo_etario = "joven" v p.tipo.grupo_etario = "adulto" v p.tipo.grupo_etario = "mayor")
+
+R2: (V s | Le_corresponde(s) : (s[PRIMA].tipo.sexo = s[DEPENDIENTE].tipo.sexo) ^ (s[PRIMA].tipo.grupo_etario = "menor" ==> 0 < s[DEPENDIENTE].edad < 18) ^ ...)
+
+R3: (V v | VENDEDOR(v) : v.categoría = "I" v v.categoría = "II" v v.categoría = "III")
+
+R4: (V v1 | VENDEDOR(v1) ^ v1.categoría = "I" : (V v2 | VENDEDOR(v2) ^ v2.categoría = "II" : (V | VENDEDOR(v3) ^ v3.categoría = "III" : 
+     v1.sueldo_base > v2.sueldo_base > v3.sueldo_base)))
+
+R5: (
+
+R6:
+
+R7:
+
+R8: (V v | Genera(v) : v[FACTURA].monto = (+ i | Se_vende(i) ^ v[VENTA] = Se_vende[VENTA] : 
+
+R9: (V v | VENDEDOR(v) : v.sueldo = sueldo_base + num_sábados*BONO.monto + (+ i)
