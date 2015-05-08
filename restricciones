@@ -1,15 +1,15 @@
-R1: Los grupos etarios de las primas son "menor", "joven", "adulto" y "mayor".
+R1: Para toda factura de cliente el monto total es la suma de los precios de venta de los artículos relacionados con la venta correspondiente.
+    (V f | Genera(f) : f[FACTURA_C].monto = (+ i | Se_vende(i) ^ i[VENTA] = f[VENTA] : i[ARTÍCULO].precio_venta))
+
+R2: Para un vendedor se acumulan los sábados que en el último mes únicamente.
+    (V v | VENDEDOR[v] : 0 <= v.num_sábados <= 4)
+
+R3: El sueldo de un vendedor es la suma de su sueldo base con el bono por los sábados trabajados en el mes y las comisiones de las ventas del mes.
+    (V v | VENDEDOR(v) : v.sueldo = v.sueldo_base + v.num_sábados*BONO.monto + (+ i | Genera(i) ^ (E j | VENTA(j) : i[VENTA] = j ^
+                                                                                (E k | Realiza(k) : k[OPERACIÓN] = j ^ k[VENDEDOR] = i[VENDEDOR]))
+                                                                                 : i[FACTURA].monto)
+R4: Los grupos etarios de las primas son "menor", "joven", "adulto" y "mayor".
     (V p | PRIMA(p) : p.tipo.grupo_etario = "menor" v p.tipo.grupo_etario = "joven" v p.tipo.grupo_etario = "adulto" v p.tipo.grupo_etario = "mayor")
-
-R2: A todo dependiente le corresponde la prima con su sexo y el grupo etario adecuado para su edad. 
-    (V s | Le_corresponde(s) : (s[PRIMA].tipo.sexo = s[DEPENDIENTE].tipo.sexo) ^ (s[PRIMA].tipo.grupo_etario = "menor" <==> 0 < s[DEPENDIENTE].edad < 18) ^ ...)
-
-R3: Los vendedores pueden de categoría I, II o III solamente.
-    (V v | VENDEDOR(v) : v.categoría = "I" v v.categoría = "II" v v.categoría = "III")
-
-R4: Mientras más alta es la categoría de un vendedor, mayor es su sueldo base.
-    (V v1 | VENDEDOR(v1) ^ v1.categoría = "I" : (V v2 | VENDEDOR(v2) ^ v2.categoría = "II" : (V | VENDEDOR(v3) ^ v3.categoría = "III" : 
-     v1.sueldo_base > v2.sueldo_base > v3.sueldo_base)))
 
 R5: La cantidad_n de un artículo es la cantidad de artículos nuevos que son instancia del mismo producto.
     (V a | Es_instancia(a) : a[ARTÍCULO].cantidad_n = (# i | Es_instancia(i) : i[ARTÍCULO] pertenece a NUEVO ^ i[PRODUCTO] = a[PRODUCTO]))
@@ -20,14 +20,21 @@ R6: La cantidad_u de un artículo es la cantidad de artículos usados que son in
 R7: La cantidad de un artículo es la suma de cantidad_n con cantidad_u.
     (V a | ARTÍCULO(a) : a.cantidad = a.cantidad_n + a.cantidad_u)
 
-R8: Para toda factura de cliente el monto total es la suma de los precios de venta de los artículos relacionados con la venta correspondiente.
-    (V f | Genera(f) : f[FACTURA_C].monto = (+ i | Se_vende(i) ^ i[VENTA] = f[VENTA] : i[ARTÍCULO].precio_venta))
+R8: El monto de una orden es la suma de las cantidades de los productos pedidos por su precio.
+     (V o | ORDEN(o) : o.monto = (+ i | Se_pide(i) ^ i[ORDEN] = o : i[PRODUCTO].precio_unidad*i.cantidad))
 
-R9: Para un vendedor se acumulan los sábados que en el último mes únicamente.
-    (V v | VENDEDOR[v] : 0 <= v.num_sábados <= 4)
+R9: La suma de las cantidades de un artículo enviado en los lotes correspondientes a una orden debe ser igual a la cantidad pedida en dicha orden.
 
-R10: El sueldo de un vendedor es la suma de su sueldo base con el bono por los sábados trabajados en el mes y las comisiones de las ventas del mes.
-    (V v | VENDEDOR(v) : v.sueldo = v.sueldo_base + v.num_sábados*BONO.monto + (+ i | Genera(i) ^ (E j | VENTA(j) : i[VENTA] = j ^ 
-                                                                                (E k | Realiza(k) : k[OPERACIÓN] = j ^ k[VENDEDOR] = i[VENDEDOR]))
-                                                                                 : i[FACTURA].monto)
-R11: 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+R10: A todo dependiente le corresponde la prima con su sexo y el grupo etario adecuado para su edad.
+    (V s | Le_corresponde(s) : (s[PRIMA].tipo.sexo = s[DEPENDIENTE].tipo.sexo) ^ (s[PRIMA].tipo.grupo_etario = "menor" <==> 0 < s[DEPENDIENTE].edad < 18) ^ ...)
+
+R11: Los vendedores pueden de categoría I, II o III solamente.
+    (V v | VENDEDOR(v) : v.categoría = "I" v v.categoría = "II" v v.categoría = "III")
+
+R12: Mientras más alta es la categoría de un vendedor, mayor es su sueldo base.
+    (V v1 | VENDEDOR(v1) ^ v1.categoría = "I" : (V v2 | VENDEDOR(v2) ^ v2.categoría = "II" : (V | VENDEDOR(v3) ^ v3.categoría = "III" :
+     v1.sueldo_base > v2.sueldo_base > v3.sueldo_base)))
+
