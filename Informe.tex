@@ -153,9 +153,11 @@ Luego de realizar este modelado conceptual de una base de datos que pretende pod
 \resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
 \hline
  \textbf{ENTIDAD}&\textbf{SEM\'ANTICA } & \textbf{ATRIBUTOS} & \textbf{SEM\'ANTICA } &  \textbf{DOMINIO} \\ 
- &\textbf{DE LA ENTIDAD} & & \textbf{DE LOS ATRIBUTOS} & \\ \hline
-Persona & Toda clase de persona & Direcci\'on & Direcci\'on de habitaci\'on  &  Secuencia \\ 
- & que participa en el modelo,  &  &de la persona.  & de caracteres. \\ \cline{3-5} 
+ &\textbf{DE LA ENTIDAD} & & \textbf{DE LOS } & \\
+ & & & \textbf{ATRIBUTOS} &\\ \hline
+Persona & Toda clase de persona & Direcci\'on & Direcci\'on de  &  Secuencia \\ 
+ & que participa en el modelo,  &  & habitaci\'on de la  & de caracteres. \\ 
+ & & & persona. &\\ \cline{3-5} 
  & entidad a categorizar. &  &  & \\
  & & Edad& Edad de la & Entero.\\ 
  & & &persona. & \\ \cline{3-5}
@@ -166,9 +168,170 @@ Persona & Toda clase de persona & Direcci\'on & Direcci\'on de habitaci\'on  &  
  & & Apellido. & Apellido de la & Cadena de \\
  & & & persona.&caracteres.\\ \cline{3-5}
   & &Tel\'efono & Tel\'efonos de la & Secuencia de 11\\
- & & &persona. & caracteres num'ericos.\\ \cline{3-5}
- & & & &\\
- & & & &\\
+ & & &persona. & caracteres\\ 
+  & & & & num\'ericos.\\ \cline{3-5}
+ & & Correo & Correo de la & Secuencia de \\
+ & & & persona.& caracteres\\ \hline
+Con\_C\'edula & Persona que  & C\'edula & C\'edula de la& Secuencia de\\
+ & posee c\'edula de & &persona. & caracteres\\
+ & &  & & num\'ericos \\ \hline
+Dependiente & Persona que  & & &\\
+ & depende de alg\'un& & &\\
+ & empleado de la& & &\\
+ & empresa. & & &\\ \hline
+ Prima& Prima de una & Tipo & Especificaciones del  &\\
+ & p\'oliza de &  & tipo de la prima &\\ \cline{3-5}
+ & seguros para & Sexo & Sexo del & Secuencia de \\
+ & un dependiente. & & dependiente. & caracteres.\\ \cline{3-5}
+ & & Grupo\_etario  & Grupo etario & cadena de \\
+ & & & al que pertenece el &caracteres.\\
+ & & & dependiente.&\\ \cline{3-5}
+ & & Monto & Monto a pagar & Cadena de \\
+ & & & de la prima por &caracteres \\
+ & & & dependiente. &num\'ericos.\\ \hline
+Empleado & Persona que & Fecha\_inicio & Fecha de cuando & Secuencia de \\
+ & trabaja para la & & empez\'o a trabajar& caracteres de la \\
+ & empresa. & & para la empresa. & forma XX/XX/XX\\ \cline{3-5}
+ & & Sueldo\_base & Sueldo base del & Secuencia de \\
+ & & & empleado.& caracteres num\'ericos \\ \hline
+Vendedor & Vendedores de & Categor\'ia & Categor\'ia de & Cadena de \\
+ & la empresa. & & vendedor. & caracteres \\
+ & & & & (I,II \'o III).\\ \cline{3-5}
+ & &Num\_s\'abados & Cantidad de s\'abados & Caracter \\
+ & & & que trabaja un & num\'erico\\
+ & & & vendedor.&\\ \cline{3-5}
+ & &Turno & Turno en el & Cadena de \\
+ & & &que trabaja el  & caracteres.\\
+ & & & empleado.&\\ \hline
+ Administrativo&Persona que es & Cargo& Cargo del & Cadena de \\
+ & parte del personal & & empleado administrativo. & caracteres\\
+ & administrativo de& & &\\
+ & la empresa.& & &\\ \hline
+Cliente & Cliente de la& & &\\
+ & mega-tienda& & &\\ \hline
+
 \end{tabular}}
+\end{table}
+
+
+
+
+
+
+
+
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+\hline
+
+Operaci\'on & Opreci\'on a &Fecha & Fecha de & Cadena de \\
+ & realizar por el & & realizaci\'on de & caracteres de\\
+ & cliente en la& & la operaci\'on &la forma XX/XX/XX\\
+ & mega-tienda. & & &\\ \hline
+Trueque & Operaci\'on de  & & &\\
+ & trueque.& & &\\ \hline
+Venta & Operaci\'on de & & &\\
+ & venta. & & &\\ \hline
+Pedido & Operaci\'on de & & &\\
+ & pedido de un  & & &\\
+ & producto que no& & &\\
+ & se encuentre en& & &\\
+ & la mega-tienda.& & &\\ \hline
+Recibo & Recibo que & Forma\_pago &Forma de pago & Cadena de\\
+ & hace constar que& & del cliente &caracteres.\\ \cline{3-5}
+ & se realiz\'o & num_tarjeta & Numero de la & Cadena de\\
+ & un truque.& & tarjeta con la  & caracteres.\\
+ & & & que se pag\'o. & num\'ericos \\ \cline{3-5}
+ & & Clave_conf & Clave de  & Cadena de \\
+ & & & confirmaci\'on & caracteres. \\ \cline{3-5}
+ & & Serial & Serial del & Cadena de \\
+ & & & recibo. & caracters.\\ \cline{3-5}
+ & & Monto & Monto de la & Cadena de \\
+ & & & transacci\'on & caracteres\\
+ & & & & num\'ericos.\\ \hline
+Factura\_c & Factura que & Forma_pago & Forma de pago & Cadena de \\
+ & se le entrega& & del cliente. & caracteres.\\ \cline{3-5}
+ & al cliente & Num_tarjeta & N\'umero de la & Cadena de \\
+ & luego de una & & tarjeta usada & caracteres\\
+ & venta & & para pagar. & num\'ericos\\ \cline{3-5}
+ & & Clave\_conf & Clave de & Cadena de \\
+ & & & confirmaci\'on de & caracteres.\\
+ & & & la venta &\\ \cline{3-5}
+ & & Serial & Serial de la & Cadena de \\
+ & & & factura. & caracteres.\\ \cline{3-5}
+Producto & Entidad abstracta & Descripci\'on & Descripci\'on del & Cadena de\\
+ & de un producto.& & producto & caracteres\\ \cline{3-5}
+ & & C\'odigo & C\'odigo del & Cadena de \\
+ & & & producto. & caracteres \\ \cline{3-5}
+ & & Nombre & Nombre del & cadena de \\
+ & & & producto & caracteres \\ \hline
+Art\'iculo & Instancia del & Categor\'ia & Categor\'ia del & Cadena de\\
+ & producto. & & producto & caracteres.\\ \cline{3-5}
+ & & Catidad & Cantidad de & Cadena de \\
+ & & & un art\'iculo en & caracteres \\
+ & & & existencia & num\'ericos. \\ \cline{3-5}
+ & & Cantidad\_n & Cantidad en & Cadena de\\
+ & & & existencia de & caracteres \\
+ & & & art\'iculos nuevos.& num\'ericos.\\ \cline{3-5}
+ & & Cantidad_u & Cantidad en & Cadena de\\
+ & & & existencia de & caracteres \\
+ & & & art\'iculos usados & num\'ericos. \\ \cline{3-5}
+ & & Fecha_elab & Fecha de & Cadena de\\
+ & & & elaboraci\'on del & caracteres num\'ericos \\
+ & & & art\'iculo & de la forma XX/XX/XX.\\ \cline{3-5}
+ & & Precio & Precio del & Cadena de \\
+ & & & art\'iculo & caracteres n\'umericos. \\ \cline{3-5}
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+Usado & Clasificaci\'on de & Num\_inv & Cantidad en & Cadena de \\
+ & art\'iculos usados. & & existencia de & caracteres num\'ericos\\
+ & & & art\'iculos usados. & \\ \cline{3-5}
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ & & & &\\
+ 
+ 
+ \end{tabular}}
 \end{table}
 \end{document}
