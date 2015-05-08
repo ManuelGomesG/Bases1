@@ -133,12 +133,42 @@ Se presenta un ap\'endice que tendr\'a como contenido el diccionario de datos de
 \section{Conclusiones}
 
 Luego de realizar este modelado conceptual de una base de datos que pretende poder resolver los problemas propuestos de la mega-tienda VenTruePe que cumpla con las condiciones de eficiencia y cualidad que un proyecto de este estilo merece. Esto se logr\'o luego de pasar por un proceso de conocimiento de los datos del problema, lo que se qur\'ia lograr y a partir de ah\'i, haciendo uso de los conceptos b\'asicos y estructuras de el modelo de datos Entidad-Relaci\'on Extendido, se realizaron varios bocetos, que fueron refin\'andose hasta lograr el resultado que presentamos. Logramos un nivel de abstracci\'on que nos ayudar\'a a realizar la base de datos que requiere la empresa de la mejor manera posible.
+\clearpage
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
 
+\section{Bibliograf\'ia}
 
+\begin{itemize}
+\item L\'aminas del curso, Prof. Leonid TINEO, PhD.
+\item “Fundamentals of Database Systems”. R. Elmasri y S. Navathe. 6th edition. Pearson/Addison-Wesley, 2011
+\end{itemize}
 
+\clearpage
+\section{Ap\'endice}
+\subsection{Diccionario de datos}
 
-
+\begin{table}[h]
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|l|l|}
+\hline
+ \textbf{ENTIDAD}&\textbf{SEM\'ANTICA } & \textbf{ATRIBUTOS} & \textbf{SEM\'ANTICA } &  \textbf{DOMINIO} \\ 
+ &\textbf{DE LA ENTIDAD} & & \textbf{DE LOS ATRIBUTOS} & \\ \hline
+Persona & Toda clase de persona & Direcci\'on & Direcci\'on de habitaci\'on  &  Secuencia \\ 
+ & que participa en el modelo,  &  &de la persona.  & de caracteres. \\ \cline{3-5} 
+ & entidad a categorizar. &  &  & \\
+ & & Edad& Edad de la & Entero.\\ 
+ & & &persona. & \\ \cline{3-5}
+ & & Sexo & Sexo de la& Cadena de   \\
+ & & & persona. & caracteres.\\ \cline{3-5}
+  & & Nombre & Nombre de la  & Cadena de \\
+ & & & persona. & caracteres.\\ \cline{3-5}
+ & & Apellido. & Apellido de la & Cadena de \\
+ & & & persona.&caracteres.\\ \cline{3-5}
+  & &Tel\'efono & Tel\'efonos de la & Secuencia de 11\\
+ & & &persona. & caracteres num'ericos.\\ \cline{3-5}
+ & & & &\\
+ & & & &\\
+\end{tabular}}
+\end{table}
 \end{document}
